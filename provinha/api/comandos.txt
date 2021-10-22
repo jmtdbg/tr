@@ -1,0 +1,11 @@
+#Instala bibliotecas
+pip install -r requirements.txt
+
+#Instala bibliotecas e ambiente
+python -m pip install -r requirements.txt
+
+#Atualisar bibliotecas
+python -m get-pip.py
+
+#URL do servidor
+http://127.0.0.1:5000/
