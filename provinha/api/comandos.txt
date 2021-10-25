@@ -1,11 +1,14 @@
-#Instala bibliotecas
+#Instalar bibliotecas
 pip install -r requirements.txt
 
-#Instala bibliotecas e ambiente
+#Instalar bibliotecas e ambiente
 python -m pip install -r requirements.txt
 
-#Atualisar bibliotecas
+#Atualizar bibliotecas
 python -m get-pip.py
 
 #URL do servidor
 http://127.0.0.1:5000/
+
+#Resolve problema de compatibilidade
+pip install 'SQLAlchemy<1.4.0'
