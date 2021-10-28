@@ -19,7 +19,7 @@ def cria_banco():
     banco.create_all()
 
 # adicionando os recursos
-# api.add_resource(Residencias, '/residencias')
+api.add_resource(Residencias, '/residencias/all/page/<int:page>/', methods=['GET'])
 api.add_resource(Residencia, '/residencias/<int:id>')
 api.add_resource(PrecoMedioAll, '/preco-medio/all')
 

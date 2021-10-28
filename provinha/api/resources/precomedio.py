@@ -38,11 +38,7 @@ class PrecoMedio(Resource):
         return {'precomedios': precomedios} # SELECT * FROM precomedios
 
 class PrecoMedioAll(Resource):
-    # atributos = reqparse.RequestParser()
-    # atributos.add_argument('neighbourhood_group')
-    # atributos.add_argument('room_type')
-    # atributos.add_argument('price')
-
+    
     def get(self):
         #SELECT * FROM residencias
         return {'precomedios': [precomedio.json() for precomedio in PrecoMedioModel.query.all()]} 

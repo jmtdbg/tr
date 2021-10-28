@@ -1,6 +1,9 @@
 from flask_restful import Resource, reqparse
+from sqlalchemy.orm import query_expression
 from models.residencia import ResidenciaModel, ResidenciaLikeModel
 from resources.filtros import normalize_path_params, consulta_com_ng, consulta_sem_ng
+# from flask_sqlalchemy import SQLAlchemy
+from flask import Blueprint, current_app, request, jsonify, url_for
 import sqlite3
 
 # Recebendo parametros opcionais
@@ -27,8 +30,6 @@ path_params.add_argument('offset', type=float)
 
 class ResidenciasFiltro(Resource):
     def get(self):
-        #SELECT * FROM residencias
-        # return {'residencias': [residencia.json() for residencia in ResidenciaModel.query.all()]} 
     
         # conecção com o sqlite
         connection = sqlite3.connect('banco.db')
@@ -73,9 +74,29 @@ class ResidenciasFiltro(Resource):
 
 # Todas as residencias
 class Residencias(Resource):
-    def get(self):
-        #SELECT * FROM residencias
-        return {'residencias': [residencia.json() for residencia in ResidenciaModel.query.all()]} 
+    def get(self, page=1):
+        # return {'residencias': [residencia.json() for residencia in ResidenciaModel.query.all()]} 
+        
+        return {'residencias': [residencia.json() for residencia in ResidenciaModel.query.limit(10).offset(0)]}  
+        
+        # return {'residencias': [residencia.json() for residencia in ResidenciaModel.query.paginate(per_page=2, page=page, error_out=False)]} 
+        
+        # result = ResidenciaModel.query.paginate(per_page=2, page=page, error_out=False)
+        # return result.json
+          
+
+
+    # def get(self, page=1):
+    #     result = ResidenciaModel.query.paginate(page, 10)
+    #     return jsonify({
+    #         'page': page,
+    #         'residencias': result,
+    #         'total pages': result.pages,
+    #         'total per pages': result.per_page,
+    #         'next page': f'{url_for("residencias.residencias")}{result.next_num}',
+    #         'previous page': f'{url_for("residencias.residencias")}{result.prev_num}',
+    #     }
+    #     ), 200
 
 # Like em residencia
 class ResidenciaLike(Resource):

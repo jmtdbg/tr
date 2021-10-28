@@ -62,17 +62,17 @@ def normalize_path_params(id = None,
             'offset': offset}
 
 consulta_sem_ng = "SELECT * FROM residencias \
-            WHERE id = ? and name = ? and host_id = ? and host_name = ? and neighbourhood_group = ?\
-            and neighbourhood = ? and latitude = ? and longitude = ? and room_type = ? and price = ?\
-            and minimum_nights = ? and number_of_reviews = ? and last_review = ? and reviews_per_month = ?\
-            and calculated_host_listings_count = ? and availability_365 = ? and like = ?\
+            WHERE id = ? or name = ? or host_id = ? or host_name = ? or neighbourhood_group = ?\
+            or neighbourhood = ? or latitude = ? or longitude = ? or room_type = ? or price = ?\
+            or minimum_nights = ? or number_of_reviews = ? or last_review = ? or reviews_per_month = ?\
+            or calculated_host_listings_count = ? or availability_365 = ? or like = ?\
             LIMIT ? OFFSET ?"
 
 consulta_com_ng = "SELECT * FROM residencias \
-            WHERE id = ? and name = ? and host_id = ? and host_name = ? and neighbourhood_group = ?\
-            and neighbourhood = ? and latitude = ? and longitude = ? and room_type = ? and price = ?\
-            and minimum_nights = ? and number_of_reviews = ? and last_review = ? and reviews_per_month = ?\
-            and calculated_host_listings_count = ? and availability_365 = ? and like = ?\
+            WHERE id = ? or name = ? or host_id = ? or host_name = ? or neighbourhood_group = ?\
+            or neighbourhood = ? or latitude = ? or longitude = ? or room_type = ? or price = ?\
+            or minimum_nights = ? or number_of_reviews = ? or last_review = ? or reviews_per_month = ?\
+            or calculated_host_listings_count = ? or availability_365 = ? or like = ?\
             LIMIT ? OFFSET ?"
 
 #########     preco-medio    ###########
@@ -97,11 +97,11 @@ def normalize_path_params_pm(neighbourhood_group=None,
         'offset': offset}
 
 consulta_sem_ng_mp= "SELECT * FROM media_preco \
-            WHERE (neighbourhood_group = ?) and (room_type = ?) \
-            and (price = ?) \
+            WHERE (neighbourhood_group = ?) or (room_type = ?) \
+            or (price = ?) \
             LIMIT ? OFFSET ?"
 
 consulta_com_ng_mp = "SELECT * FROM media_preco \
-            WHERE (neighbourhood_group = ?) and (room_type = ?) \
-            and (price = ?) \
+            WHERE (neighbourhood_group = ?) or (room_type = ?) \
+            or (price = ?) \
             LIMIT ? OFFSET ?"
